@@ -74,4 +74,7 @@ Example 2: Concatenating Strings
     greeting="Hello"
     subject="World"
     echo "$greeting, $subject!"
-## Here, the script concatenates the strings "Hello" and "World" with a comma in between.
+    
+ Here, the script concatenates the strings "Hello" and "World" with a comma in between.
+
+ You have just completed your first shell scripting project and the codes are available for you within the repository to copy and try out.
