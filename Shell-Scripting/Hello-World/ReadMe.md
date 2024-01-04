@@ -62,10 +62,10 @@ Example 1: Printing a Variable
 
     #!/bin/bash
     # Using echo to print a variable
-    name="John"
+    name="Olúmáyòwá"
     echo "Hello, $name!"
     
-This script declares a variable name with the value "John" and prints a personalized greeting.
+This script declares a variable name with the value "Olúmáyòwá" and prints a personalized greeting.
 
 Example 2: Concatenating Strings
 
