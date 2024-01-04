@@ -77,5 +77,5 @@ Adding comments to your code provides clarity for both yourself and others who m
     # Your script logic here
 
 
-For additional reference, the YouTube playlist here is a good resource to start with to learning shell scripting: [![YouTube Playlist](https://img.youtube.com/vi/cQepf9fY6cE/maxresdefault.jpg)](https://www.youtube.com/watch?v=cQepf9fY6cE&list=PLS1QulWo1RIYmaxcEqw5JhK3b-6rgdWO_)
+For additional reference, the YouTube playlist here is a good resource to start with to learning shell scripting: [![Shell Scripting Playlist](https://img.youtube.com/vi/cQepf9fY6cE/maxresdefault.jpg)](https://www.youtube.com/watch?v=cQepf9fY6cE&list=PLS1QulWo1RIYmaxcEqw5JhK3b-6rgdWO_)
 
