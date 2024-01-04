@@ -57,17 +57,19 @@ Breaking your script into functions enhances reusability and maintainability. Fo
     
 This script defines a greet function that takes a name as an argument and outputs a personalized greeting. Functions are instrumental in organizing and optimizing your shell scripts.
 
-Best Practices for Effective Shell Scripting
-Commenting Your Code
-Adding comments to your code provides clarity for both yourself and others who may read your scripts. Use the # symbol to add comments, as shown below:
 
+## Best Practices for Effective Shell Scripting
+### Commenting Your Code
+Adding comments to your code provides clarity for both yourself and others who may read your scripts. Use the # symbol to add comments, as shown below:
 
     #!/bin/bash
     # This script prints a greeting
     echo "Hello, World!"
-    Error Handling
-    Robust shell scripts include mechanisms for handling errors gracefully. The set -e option, for example, ensures that the script exits if any command returns a non-zero status.
 
+    
+## Error Handling
+
+### Robust shell scripts include mechanisms for handling errors gracefully. The set -e option, for example, ensures that the script exits if any command returns a non-zero status.
 
     #!/bin/bash
     set -e
