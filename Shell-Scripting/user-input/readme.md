@@ -44,27 +44,27 @@ Read the user's choice:
 6. Conditional Actions
 Perform actions based on the user's choice using a case statement:
 
-        case $userChoice in
-        1)
-          echo "You chose to display a greeting."
-          # Additional actions for displaying a greeting can be added here
-          ;;
-        2)
-          echo "You chose to perform a calculation."
-          # Prompt the user to enter two numbers
-          read -p "Enter the first number: " num1
-          read -p "Enter the second number: " num2
-          # Perform the calculation (sum in this case)
-          result=$((num1 + num2))
-          echo "The sum of $num1 and $num2 is: $result"
-          ;;
-        3)
-          echo "Exiting the script. Goodbye, $userName!"
-          exit 0
-          ;;
-        *)
-          echo "Invalid choice. Please choose 1, 2, or 3."
-          ;;
-      esac
+                case $userChoice in
+                1)
+                  echo "You chose to display a greeting."
+                  # Additional actions for displaying a greeting can be added here
+                  ;;
+                2)
+                  echo "You chose to perform a calculation."
+                  # Prompt the user to enter two numbers
+                  read -p "Enter the first number: " num1
+                  read -p "Enter the second number: " num2
+                  # Perform the calculation (sum in this case)
+                  result=$((num1 + num2))
+                  echo "The sum of $num1 and $num2 is: $result"
+                  ;;
+                3)
+                  echo "Exiting the script. Goodbye, $userName!"
+                  exit 0
+                  ;;
+                *)
+                  echo "Invalid choice. Please choose 1, 2, or 3."
+                  ;;
+              esac
 
    Script is in the repository and can be copied for you to try out. 
