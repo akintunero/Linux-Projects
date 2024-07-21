@@ -33,13 +33,14 @@ Comparison Operators
 Comparison operators are used to compare two values and return a boolean result (true or false).
 
 Common Operators:
+    
+    -eq: Equal to (e.g., [ $num1 -eq $num2 ] checks if num1 is equal to num2)
+    -ne: Not equal to (e.g., [ $num1 -ne $num2 ] checks if num1 is not equal to num2)
+    -lt: Less than (e.g., [ $num1 -lt $num2 ] checks if num1 is less than num2)
+    -le: Less than or equal to (e.g., [ $num1 -le $num2 ] checks if num1 is less than or equal to num2)
+    -gt: Greater than (e.g., [ $num1 -gt $num2 ] checks if num1 is greater than num2)
+    -ge: Greater than or equal to (e.g., [ $num1 -ge $num2 ] checks if num1 is greater than or equal to num2)
 
--eq: Equal to (e.g., [ $num1 -eq $num2 ] checks if num1 is equal to num2)
--ne: Not equal to (e.g., [ $num1 -ne $num2 ] checks if num1 is not equal to num2)
--lt: Less than (e.g., [ $num1 -lt $num2 ] checks if num1 is less than num2)
--le: Less than or equal to (e.g., [ $num1 -le $num2 ] checks if num1 is less than or equal to num2)
--gt: Greater than (e.g., [ $num1 -gt $num2 ] checks if num1 is greater than num2)
--ge: Greater than or equal to (e.g., [ $num1 -ge $num2 ] checks if num1 is greater than or equal to num2)
 Usage Example in Shell Script
 
     #!/bin/bash
