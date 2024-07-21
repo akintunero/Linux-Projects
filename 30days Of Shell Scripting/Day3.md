@@ -4,7 +4,6 @@
 
 In scripting, variables and user input are fundamental concepts that allow you to make your scripts more dynamic and interactive. On Day 3, we will learn how to define and use variables, and how to read input from users. Understanding these concepts will enable you to create more versatile and engaging scripts.
 
-## Topics
 
 ### Defining and Using Variables
 
