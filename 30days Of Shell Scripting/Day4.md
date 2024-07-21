@@ -58,10 +58,11 @@ Usage Example in Shell Script
 Logical operators are used to combine multiple conditions and return true or false based on the combined result.
 
 Common Operators:
+        
+        -a: Logical AND (e.g., [ $num1 -gt 5 -a $num2 -lt 10 ] checks if num1 is greater than 5 AND num2 is less than 10)
+        -o: Logical OR (e.g., [ $num1 -gt 5 -o $num2 -lt 3 ] checks if num1 is greater than 5 OR num2 is less than 3)
+        !: Logical NOT (e.g., ![ $num1 -eq 10 ] checks if num1 is NOT equal to 10)
 
--a: Logical AND (e.g., [ $num1 -gt 5 -a $num2 -lt 10 ] checks if num1 is greater than 5 AND num2 is less than 10)
--o: Logical OR (e.g., [ $num1 -gt 5 -o $num2 -lt 3 ] checks if num1 is greater than 5 OR num2 is less than 3)
-!: Logical NOT (e.g., ![ $num1 -eq 10 ] checks if num1 is NOT equal to 10)
 Usage Example in Shell Script
 
     #!/bin/bash
