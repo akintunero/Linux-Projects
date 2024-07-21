@@ -67,7 +67,7 @@ Enter the following lines into your script:
     read userName
 
 # Greet the user
-echo "Hello, $userName! Welcome to the world of shell scripting."
+      echo "Hello, $userName! Welcome to the world of shell scripting."
 
 Save the File:
 Save the file with a .sh extension, for In this scenario, greet_user.sh.
@@ -77,13 +77,13 @@ Open your terminal and navigate to the directory where you saved your script:
 
 
 
-cd /path/to/your/script
+      cd /path/to/your/script
 
 Make the script executable:
 
 
 
-chmod +x greet_user.sh
+      chmod +x greet_user.sh
 
 Run the Script:
 Execute the script by running:
