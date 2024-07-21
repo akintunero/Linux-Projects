@@ -75,7 +75,7 @@ Usage Example in Shell Script
         echo "Condition not met"
     fi
 
-## Exercises
+### Exercises
 Basic Arithmetic Operations Script
 Write a script that prompts the user to input two numbers and then performs addition, subtraction, multiplication, and division on those numbers. Display the results for each operation.
 
