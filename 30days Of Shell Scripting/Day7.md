@@ -112,8 +112,8 @@ Solution:
     done
 
 
-Additional Resources
+Additional documentation:
 
-    Bash Until Loop
-    Linuxize - Bash Break and Continue
-    TutorialsPoint - Unix Shell Scripting
+- [Bash If-Else Statement](https://www.freecodecamp.org/news/bash-if-statement-linux-shell-if-else-syntax-example/)
+- [Linuxize - Bash If Statement](https://linuxize.com/post/bash-if-else-statement/)
+- [TutorialsPoint - Unix Shell Scripting](https://www.tutorialspoint.com/unix/shell_scripting.htm)
