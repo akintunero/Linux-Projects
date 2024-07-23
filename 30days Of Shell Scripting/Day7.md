@@ -1,118 +1,125 @@
-# Loops - Part 2
+# Functions - Part 1
 
-In this lesson, we'll explore `until` loops and loop control statements (`break` and `continue`). These concepts are essential for controlling the flow of your scripts and handling more complex looping scenarios.
+In this lesson, we'll explore functions in shell scripting. Functions allow you to group a set of commands into a single unit, making your scripts more modular and reusable. 
 
 ## Topics
 
-### 1. `until` Loops
-An `until` loop is similar to a `while` loop, but it continues executing the block of code until the specified condition becomes true. In other words, the block of code runs as long as the condition is false.
+### 1. Defining and Calling Functions
+
+A function is a block of code that can be reused multiple times throughout your script. Defining a function involves specifying its name and the commands it will execute. Once defined, you can call the function by its name, which will execute the block of code contained within it.
 
 **Syntax:**
-
-    until condition; do
-        # code to execute while condition is false
-    done
-
-Explanation:
-
-    condition: An expression that is evaluated before each iteration of the loop. If the condition is false, the loop continues; if it is true, the loop stops.
-
+    
+    function_name() {
+        # commands to be executed
+    }
+    
 Example:
 
-    i=10
-    until [ $i -lt 1 ]; do
-        echo $i
-        i=$((i - 1))
-    done
+    greet() {
+        echo "Hello, World!"
+    }
+    
+    # Call the function
+    greet
+
+In this example, we define a function named greet that prints "Hello, World!" to the terminal. After defining the function, we call it by simply writing its name, which executes the code inside the function.
+Detailed Explanation and Examples
+Defining a Function
+
+To define a function, you use the function name followed by parentheses and curly braces. Inside the curly braces, you write the commands that should be executed when the function is called.
 
 
-In this example, the until loop counts down from 10 to 1, decrementing the variable i by 1 in each iteration.
+    say_hello() {
+        echo "Hello, everyone!"
+    }
 
-2. Loop Control (break, continue)
+In this example, we define a function named say_hello that prints a greeting message.
+Calling a Function
 
-Loop control statements are used to alter the flow of a loop. The two primary control statements in shell scripting are break and continue.
-break Statement
+After defining a function, you can call it by simply using its name.
 
-The break statement is used to exit the loop prematurely, regardless of the loop's condition.
+    say_hello
+
+When you call say_hello, the function executes the commands inside its block, printing "Hello, everyone!" to the terminal.
+Passing Arguments to Functions
+
+Functions can also accept arguments, which allows you to pass data to the function when you call it.
 
 Syntax:
 
-
-    break
-
-Example:
-
-    for i in {1..10}; do
-        if [ $i -eq 7 ]; then
-            break
-        fi
-        echo $i
-    done
-
-In this example, the loop prints numbers from 1 to 6. When i equals 7, the break statement exits the loop.
-continue Statement
-
-The continue statement skips the rest of the code inside the current iteration of the loop and jumps to the next iteration.
-
-Syntax:
-
-    continue
+    function_name() {
+        # $1, $2, etc. are the arguments passed to the function
+        echo "Argument 1: $1"
+        echo "Argument 2: $2"
+    }
+    
+    # Call the function with arguments
+    function_name "First" "Second"
 
 Example:
 
-    for i in {1..10}; do
-        if [ $i -eq 7 ]; then
-            continue
-        fi
-        echo $i
-    done
 
-In this example, the loop prints numbers from 1 to 10, except for 7. When i equals 7, the continue statement skips the print statement for that iteration.
+    greet_person() {
+        echo "Hello, $1!"
+    }
+    
+    # Call the function with an argument
+    greet_person "Alice"
 
-### Exercises
-Exercise 1: Countdown Timer
+In this example, we define a function named greet_person that accepts one argument and prints a personalized greeting. When we call the function with the argument "Alice", it prints "Hello, Alice!".
+Exercises
+Exercise 1: Write a Script with a Function that Prints a Message
 
-Create a script that counts down from 10 to 1 using an until loop and then prints "Happy New Year!".
-
-Solution:
-
-    i=10
-    until [ $i -lt 1 ]; do
-        echo $i
-        i=$((i - 1))
-    done
-    echo "Happy New Year!"
-
-Exercise 2: Skip Number
-
-Write a script that prints numbers from 1 to 10, but skips the number 5 using a for loop and the continue statement.
+Task:
+Write a script that defines a function named print_message which prints a custom message to the terminal.
 
 Solution:
 
-    for i in {1..10}; do
-        if [ $i -eq 5 ]; then
-            continue
-        fi
-        echo $i
-    done
+    #!/bin/bash
+    
+    print_message() {
+        echo "This is a custom message from the function."
+    }
+    
+    # Call the function
+    print_message
 
-Exercise 3: Exit Loop Early
+Exercise 2: Function with Arguments
 
-Write a script that prints numbers from 1 to 10, but exits the loop if the number is greater than or equal to 8 using a while loop and the break statement.
+Task:
+Write a script that defines a function named greet_user which takes a user's name as an argument and prints a personalized greeting.
 
 Solution:
 
-    i=1
-    while [ $i -le 10 ]; do
-        if [ $i -ge 8 ]; then
-            break
-        fi
-        echo $i
-        i=$((i + 1))
-    done
+    #!/bin/bash
+    
+    greet_user() {
+        echo "Hello, $1! Welcome to the shell scripting tutorial."
+    }
+    
+    # Call the function with an argument
+    greet_user "John"
 
+Exercise 3: Function with Multiple Arguments
 
-Additional documentation:
+Task:
+Write a script that defines a function named add_numbers which takes two numbers as arguments, adds them, and prints the result.
+
+Solution:
+
+    #!/bin/bash
+    
+    add_numbers() {
+        sum=$(( $1 + $2 ))
+        echo "The sum of $1 and $2 is: $sum"
+    }
+    
+    # Call the function with arguments
+    add_numbers 5 7
+
+Additional References:
+
 
 - [Bash If-Else Statement](https://www.freecodecamp.org/news/bash-if-statement-linux-shell-if-else-syntax-example/)
 - [Linuxize - Bash If Statement](https://linuxize.com/post/bash-if-else-statement/)
