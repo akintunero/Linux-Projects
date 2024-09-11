@@ -7,6 +7,7 @@ This repository is a collection of Bash projects designed to help you master Bas
 ## Projects
 
 1. **To-do list manager**
+1. **Disk space Usage report**
 
 ## How to Use
 
@@ -34,4 +35,3 @@ Feel free to contribute to this repository by submitting pull requests. Contribu
 - Improvements to existing projects
 - Bug fixes
 - Documentation enhancements
-
