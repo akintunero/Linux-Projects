@@ -1,0 +1,62 @@
+# Step 4: Learn Shell Scripting
+
+## Beginner
+
+1. **Automate backups of a specific directory**
+   - Write a Bash script that:
+     - Accepts a directory as an argument
+     - Creates a timestamped backup of that directory using `tar`
+     - Stores the backup in a designated folder
+   - Schedule the script to run daily using `cron`
+
+2. **Generate a system report (CPU, memory, disk usage)**
+   - Write a script that:
+     - Gathers CPU, memory, and disk usage data using `top`, `free`, and `df`
+     - Formats the output into a readable report
+     - Saves the report to a file
+
+3. **Develop a simple calculator script**
+   - Create a script that:
+     - Prompts the user to input two numbers and an operator (+, -, *, /)
+     - Performs the calculation using conditional statements and `expr` or `bc`
+     - Displays the result to the user
+
+## Intermediate
+
+1. **Monitor log files and send alerts for specific events**
+   - Write a script that:
+     - Monitors a specified log file (e.g., `/var/log/syslog`)
+     - Searches for a specific keyword (e.g., "error" or "failed")
+     - Sends an alert (email or notification) if the keyword is found
+
+2. **Manage user accounts (add, remove, modify)**
+   - Write a script that:
+     - Accepts a command (`add`, `remove`, or `modify`) and a username as input
+     - Uses `useradd`, `usermod`, or `userdel` based on the input
+     - Verifies the success of the operation
+
+3. **Automate software installation and configuration**
+   - Create a script that:
+     - Installs a list of software packages using the system's package manager
+     - Configures the installed software by editing configuration files
+     - Restarts services if necessary
+
+## Advanced
+
+1. **Create a complex log analysis tool with pattern matching and reporting**
+   - Write a script that:
+     - Scans multiple log files for patterns (e.g., failed logins, server errors)
+     - Uses regular expressions for advanced pattern matching
+     - Generates detailed reports with timestamps and counts of occurrences
+
+2. **Develop a multi-threaded script for parallel data processing**
+   - Write a Bash script that:
+     - Processes a large dataset by splitting it into chunks
+     - Uses background processes (`&`) to handle each chunk in parallel
+     - Waits for all processes to finish and aggregates the results
+
+3. **Integrate with APIs for automated system management**
+   - Write a script that:
+     - Connects to a public or private API (e.g., for system monitoring or weather data)
+     - Sends and receives JSON data using `curl` and `jq`
+     - Automates a task based on the API response (e.g., sending alerts or reports)
