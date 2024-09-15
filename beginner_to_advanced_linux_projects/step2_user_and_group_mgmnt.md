@@ -1,7 +1,7 @@
 
-## Step 2: Master User and Group Management
+# Step 2: Master User and Group Management
 
-### Beginner
+## Beginner
 
 1. **Create new users and groups**
    - Use `useradd` to create at least 3 new users
@@ -16,7 +16,7 @@
    - Use `passwd` to set/change passwords for the users you created
    - Try to switch to these users using `su` to verify the passwords
 
-### Intermediate
+## Intermediate
 
 1. **Set up user-specific environments**
    - Edit `.bashrc` and `.bash_profile` for a user
@@ -33,7 +33,7 @@
    - Grant a user permission to run specific commands with sudo
    - Test the configuration by trying to run commands as that user
 
-### Advanced
+## Advanced
 
 1. **Implement LDAP for centralized user management**
    - Install and configure OpenLDAP

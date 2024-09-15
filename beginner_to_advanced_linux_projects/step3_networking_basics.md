@@ -1,6 +1,6 @@
-## Step 3: Understand Networking Basics
+# Step 3: Understand Networking Basics
 
-### Beginner
+## Beginner
 
 1. **Configure network interfaces using the command line**
    - Use `ip` command to view network interfaces
@@ -18,7 +18,7 @@
    - Add a rule to block a specific IP address
    - Save the rules so they persist after reboot
 
-### Intermediate
+## Intermediate
 
 1. **Configure a DHCP server**
    - Install and configure `isc-dhcp-server`
@@ -37,7 +37,7 @@
    - Set up iptables rules to perform NAT
    - Test by connecting a client machine and verifying internet access
 
-### Advanced
+## Advanced
 
 1. **Configure a VPN server using OpenVPN**
    - Install OpenVPN
