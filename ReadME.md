@@ -55,7 +55,14 @@ Linux-Projects/
 2. **Install Dependencies:**
    ```bash
    # Install testing framework
-   sudo apt-get install bats-core jq curl wget bc shellcheck
+   sudo apt-get install jq curl wget bc shellcheck
+   
+   # Install bats-core (testing framework)
+   git clone https://github.com/bats-core/bats-core.git
+   cd bats-core
+   sudo ./install.sh /usr/local
+   cd ..
+   rm -rf bats-core
    
    # Or on macOS
    brew install bats-core jq curl wget bc shellcheck

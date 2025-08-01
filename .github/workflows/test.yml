@@ -17,7 +17,14 @@ jobs:
     - name: Set up environment
       run: |
         sudo apt-get update
-        sudo apt-get install -y bats-core jq curl wget bc shellcheck
+        sudo apt-get install -y jq curl wget bc shellcheck
+        
+        # Install bats-core manually since it's not in Ubuntu repos
+        git clone https://github.com/bats-core/bats-core.git
+        cd bats-core
+        sudo ./install.sh /usr/local
+        cd ..
+        rm -rf bats-core
         
     - name: Install dependencies
       run: |

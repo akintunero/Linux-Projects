@@ -142,13 +142,15 @@ We welcome various types of contributions:
    # On macOS
    brew install bats-core
    
-   # On Ubuntu/Debian
-   sudo apt-get install bats
-   
-   # Manual installation
+   # On Ubuntu/Debian (manual installation required)
    git clone https://github.com/bats-core/bats-core.git
    cd bats-core
    sudo ./install.sh /usr/local
+   cd ..
+   rm -rf bats-core
+   
+   # Alternative: Use package manager if available
+   sudo apt-get install bats  # Some distributions have this package
    ```
 
 2. **Create Test Files**

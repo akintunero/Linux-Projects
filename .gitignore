@@ -7,17 +7,6 @@
 ehthumbs.db
 Thumbs.db
 
-# Generated files from scripts
-*.log
-*.backup
-*.cache
-*.tmp
-*.temp
-todo_list.txt
-disk_usage_report.txt
-api_client.log
-docker_manager.log
-
 # IDE files
 .vscode/
 .idea/
@@ -69,12 +58,6 @@ __pycache__/
 venv/
 env/
 .venv/
-
-# Script-specific generated files
-~/.cache/api_client/
-~/.config/advanced_scripts/
-backups/
-reports/
 
 # OS generated files
 .DS_Store?
