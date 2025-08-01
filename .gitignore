@@ -1,0 +1,85 @@
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Generated files from scripts
+*.log
+*.backup
+*.cache
+*.tmp
+*.temp
+todo_list.txt
+disk_usage_report.txt
+api_client.log
+docker_manager.log
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+*.dll
+
+# Package files
+*.tar.gz
+*.zip
+*.rar
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Test coverage
+coverage/
+.coverage
+
+# Node modules (if any node tools are used)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Backup files
+*.bak
+*.backup
+
+# Vagrant
+.vagrant/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Script-specific generated files
+~/.cache/api_client/
+~/.config/advanced_scripts/
+backups/
+reports/
+
+# OS generated files
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db 

@@ -1,0 +1,127 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y bats-core jq curl wget bc shellcheck
+        
+    - name: Install dependencies
+      run: |
+        # Install additional tools
+        sudo apt-get install -y md5sum
+        
+    - name: Run shellcheck
+      run: |
+        echo "Running shellcheck on all shell scripts..."
+        find . -name "*.sh" -type f -exec shellcheck {} \;
+        
+    - name: Run syntax checks
+      run: |
+        echo "Checking syntax of all shell scripts..."
+        find . -name "*.sh" -type f -exec bash -n {} \;
+        
+    - name: Run tests
+      run: |
+        echo "Running test suite..."
+        if [ -d "test" ]; then
+          bats test/
+        else
+          echo "No test directory found"
+        fi
+        
+    - name: Test todo manager
+      run: |
+        echo "Testing todo manager script..."
+        cd updated_bash_projects/to-do-list
+        chmod +x to_do_list.sh
+        
+        # Test basic functionality
+        ./to_do_list.sh add "test task"
+        ./to_do_list.sh list
+        ./to_do_list.sh remove 1
+        
+    - name: Test disk usage script
+      run: |
+        echo "Testing disk usage script..."
+        cd updated_bash_projects/disk-space-usage
+        chmod +x disk-space-usage.sh
+        
+        # Test help functionality
+        ./disk-space-usage.sh --help
+        
+        # Test with current directory
+        ./disk-space-usage.sh . --format bytes
+        
+    - name: Test advanced scripts
+      run: |
+        echo "Testing advanced scripts..."
+        if [ -d "advanced_scripting" ]; then
+          cd advanced_scripting
+          
+          # Test API client
+          if [ -f "api_client.sh" ]; then
+            chmod +x api_client.sh
+            ./api_client.sh --help
+          fi
+          
+          # Test Docker manager
+          if [ -f "docker_manager.sh" ]; then
+            chmod +x docker_manager.sh
+            ./docker_manager.sh --help
+          fi
+        fi
+        
+    - name: Check documentation
+      run: |
+        echo "Checking documentation..."
+        
+        # Check if README files exist
+        if [ ! -f "ReadME.md" ]; then
+          echo "Warning: Main README.md not found"
+        fi
+        
+        # Check if contributing guidelines exist
+        if [ ! -f "CONTRIBUTING.md" ]; then
+          echo "Warning: CONTRIBUTING.md not found"
+        fi
+        
+        # Check if license exists
+        if [ ! -f "LICENSE" ]; then
+          echo "Warning: LICENSE file not found"
+        fi
+        
+    - name: Validate file permissions
+      run: |
+        echo "Checking file permissions..."
+        find . -name "*.sh" -type f -exec ls -la {} \;
+        
+    - name: Check for common issues
+      run: |
+        echo "Checking for common issues..."
+        
+        # Check for .DS_Store files
+        if find . -name ".DS_Store" | grep -q .; then
+          echo "Warning: .DS_Store files found"
+          find . -name ".DS_Store"
+        fi
+        
+        # Check for executable scripts without shebang
+        find . -name "*.sh" -type f -executable | while read file; do
+          if ! head -1 "$file" | grep -q "^#!"; then
+            echo "Warning: $file is executable but missing shebang"
+          fi
+        done 
