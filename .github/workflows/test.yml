@@ -29,7 +29,8 @@ jobs:
     - name: Install dependencies
       run: |
         # Install additional tools
-        sudo apt-get install -y md5sum
+        # md5sum is part of coreutils, which is already installed
+        # No additional installation needed
         
     - name: Run shellcheck
       run: |
