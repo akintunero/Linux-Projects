@@ -99,7 +99,12 @@ get_disk_usage() {
     # Use find command for better performance and error handling
     while IFS= read -r -d '' file; do
         if [[ -f "$file" ]]; then
-            size=$(stat -c%s "$file" 2>/dev/null || echo "0")
+            # Cross-platform stat command
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+                size=$(stat -f%z "$file" 2>/dev/null || echo "0")
+            else
+                size=$(stat -c%s "$file" 2>/dev/null || echo "0")
+            fi
             total_size=$((total_size + size))
         fi
     done < <(find "$dir" -maxdepth 1 -type f -print0 2>/dev/null)

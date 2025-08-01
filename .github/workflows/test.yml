@@ -74,7 +74,15 @@ jobs:
         # Test with current directory (create a subdirectory first)
         mkdir -p test_subdir
         echo "test content" > test_subdir/test_file.txt
-        ./disk-space-usage.sh . --format bytes || echo "Script completed (no subdirectories found is normal)"
+        echo "test content 2" > test_subdir/test_file2.txt
+        
+        # Run the script and capture output
+        if ./disk-space-usage.sh . --format bytes; then
+          echo "✅ Disk usage script completed successfully"
+        else
+          echo "⚠️  Disk usage script exited with non-zero code (this may be normal if no subdirectories found)"
+          echo "Script output above shows the actual behavior"
+        fi
         
     - name: Test advanced scripts
       run: |
