@@ -1,6 +1,6 @@
 # A disposable Linux sandbox for every lesson and project in this repository.
 # Nothing you do inside it can harm your own machine.
-FROM ubuntu:24.04
+FROM ubuntu:25.10
 
 ARG USERNAME=learner
 ENV DEBIAN_FRONTEND=noninteractive \
