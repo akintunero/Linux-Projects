@@ -31,7 +31,7 @@ jobs:
 
       - name: Open an issue for broken links (scheduled runs only)
         if: github.event_name == 'schedule' && steps.lychee.outputs.exit_code != 0
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: Broken links found
           content-filepath: ./lychee/out.md
