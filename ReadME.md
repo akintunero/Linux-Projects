@@ -243,6 +243,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ by Olúmáyòwá Akinkuehinmi**
-
 *Empowering developers to master Linux and automation through hands-on learning.*
