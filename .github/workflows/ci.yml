@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  shell:
+    name: Lint and test shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends bats shellcheck shfmt jq
+
+      - name: ShellCheck
+        run: shellcheck -x lib/*.sh projects/*/*.sh
+
+      - name: Format check (shfmt)
+        run: shfmt -d -i 4 -ci lib projects tests/test_helper.bash
+
+      - name: Syntax check
+        run: |
+          for f in lib/*.sh projects/*/*.sh; do bash -n "$f"; done
+
+      - name: Bats tests
+        run: bats --timing tests/
+
+  markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: markdownlint
+        run: npx --yes markdownlint-cli2@0.14.0 "**/*.md" "#node_modules"
+
+  repo-hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Required files exist
+        run: |
+          missing=0
+          for f in README.md LICENSE CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md; do
+            [ -f "$f" ] || { echo "::error::missing $f"; missing=1; }
+          done
+          exit "$missing"
+
+      - name: No editor or OS junk is committed
+        run: |
+          junk=$(git ls-files | grep -E '(^|/)(\.idea|\.vscode|\.DS_Store|Thumbs\.db)(/|$)' || true)
+          if [ -n "$junk" ]; then
+            echo "::error::remove these files from git:"; echo "$junk"; exit 1
+          fi
+
+      - name: Shell scripts have a shebang and are executable
+        run: |
+          bad=0
+          for f in $(git ls-files 'projects/*.sh'); do
+            head -n1 "$f" | grep -q '^#!' || { echo "::error file=$f::missing shebang"; bad=1; }
+            [ -x "$f" ] || { echo "::error file=$f::not executable (git update-index --chmod=+x)"; bad=1; }
+          done
+          exit "$bad"
+
+      - name: No CRLF line endings in scripts
+        run: |
+          if git ls-files '*.sh' '*.bats' '*.bash' | xargs grep -l $'\r' ; then
+            echo "::error::CRLF found in the files above"; exit 1
+          fi

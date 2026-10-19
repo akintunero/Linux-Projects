@@ -1,0 +1,33 @@
+# A disposable Ubuntu 24.04 lab VM for Intel/AMD machines.
+#   vagrant up        create and start it
+#   vagrant ssh       get a shell
+#   vagrant destroy   delete it (do this whenever you want a clean slate)
+#
+# Apple Silicon: use Vagrantfile.apple-silicon instead (see README.md).
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "bento/ubuntu-24.04"
+  config.vm.hostname = "linux-lab"
+
+  # The repository is shared into the VM at /vagrant.
+  config.vm.synced_folder "../..", "/vagrant"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "linux-lab"
+    vb.memory = 2048
+    vb.cpus = 2
+    # Two extra empty disks for the disk-management, LVM and RAID lessons.
+    2.times do |i|
+      disk = File.join(File.dirname(__FILE__), ".lab-disk#{i}.vdi")
+      vb.customize ["createhd", "--filename", disk, "--size", 1024] unless File.exist?(disk)
+      vb.customize ["storageattach", :id, "--storagectl", "SATA Controller",
+                    "--port", 2 + i, "--device", 0, "--type", "hdd", "--medium", disk]
+    end
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      bats shellcheck shfmt jq make tmux tree nmap ufw nftables fail2ban lvm2 mdadm
+  SHELL
+end

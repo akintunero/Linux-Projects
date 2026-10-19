@@ -1,0 +1,31 @@
+name: Lesson feedback
+description: Something was confusing, outdated, unsafe or missing in a lesson
+labels: [documentation]
+body:
+  - type: input
+    id: lesson
+    attributes:
+      label: Lesson
+      description: Path or title, e.g. `learn/linux-path/step-06-system-security.md`
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feedback
+      options:
+        - Confusing explanation
+        - Command does not work
+        - Outdated tool or advice
+        - Missing warning or undo step
+        - Missing topic
+        - Typo
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What would have helped you?
+    validations:
+      required: true

@@ -1,0 +1,11 @@
+# Shell scripts must keep LF line endings, even when checked out on Windows,
+# otherwise `#!/usr/bin/env bash\r` fails with "bad interpreter".
+* text=auto
+*.sh text eol=lf
+*.bash text eol=lf
+*.bats text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Vagrantfile text eol=lf
+Dockerfile text eol=lf

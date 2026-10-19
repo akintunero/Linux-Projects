@@ -1,0 +1,5 @@
+# ShellCheck configuration (https://www.shellcheck.net/wiki/)
+shell=bash
+external-sources=true
+# Resolve `# shellcheck source=` paths relative to the script being checked.
+source-path=SCRIPTDIR

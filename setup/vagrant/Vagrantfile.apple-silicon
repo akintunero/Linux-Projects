@@ -1,0 +1,6 @@
+# Lab VM for Apple Silicon (M1/M2/M3) using VMware Fusion.
+# Use it with:  VAGRANT_VAGRANTFILE=Vagrantfile.apple-silicon vagrant up
+Vagrant.configure("2") do |config|
+  config.vm.box = "spox/ubuntu-arm"
+  config.vm.box_version = "1.0.0"
+end

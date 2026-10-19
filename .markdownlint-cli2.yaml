@@ -1,0 +1,17 @@
+# markdownlint-cli2 configuration
+config:
+  default: true
+  MD013: false # prose line length: wrapping is not enforced
+  MD024:
+    siblings_only: true # lessons repeat headings like "Solution" under different exercises
+  MD033: false # <details>/<summary> are used for collapsible solutions
+  MD036: false # bold text used as a label is allowed
+  MD041: false # some files start with a badge or alert instead of an H1
+  MD046:
+    style: fenced # code must be fenced and tagged, never indented
+  MD040: true # every fenced block needs a language tag
+globs:
+  - "**/*.md"
+ignores:
+  - "node_modules/**"
+  - ".git/**"

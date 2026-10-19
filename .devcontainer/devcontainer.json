@@ -1,0 +1,20 @@
+{
+  "name": "Linux-Projects sandbox",
+  "build": { "dockerfile": "Dockerfile" },
+  "remoteUser": "learner",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "timonwong.shellcheck",
+        "foxundermoon.shell-format",
+        "jetmartin.bats",
+        "DavidAnson.vscode-markdownlint",
+        "EditorConfig.EditorConfig"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "postCreateCommand": "make check"
+}

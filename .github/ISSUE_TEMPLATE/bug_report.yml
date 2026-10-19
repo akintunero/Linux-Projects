@@ -1,0 +1,25 @@
+name: Bug report
+description: A script fails, or a lesson's command does not do what the text says
+labels: [bug]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: File or lesson, e.g. `projects/todo-list/todo.sh` or `learn/30-days-of-bash/day-05.md`
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The exact command you ran, what you expected, and what you got (paste the output).
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Distro and version, Bash version (`bash --version`), or "devcontainer".
+    validations:
+      required: true

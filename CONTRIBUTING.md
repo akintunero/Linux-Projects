@@ -1,331 +1,92 @@
-# Contributing to Linux-Projects
+# Contributing
 
-Thank you for your interest in contributing to Linux-Projects! This document provides guidelines and information for contributors.
+Thank you for helping people learn Linux. The most valuable contributions are **fixing a lesson that
+confused or failed you**, adding exercises and solutions, and improving tests.
 
-## Table of Contents
+By participating you agree to the [Code of Conduct](CODE_OF_CONDUCT.md). Report security problems
+privately as described in [SECURITY.md](SECURITY.md).
 
-- [Getting Started](#getting-started)
-- [How to Contribute](#how-to-contribute)
-- [Code Style Guidelines](#code-style-guidelines)
-- [Testing Guidelines](#testing-guidelines)
-- [Pull Request Process](#pull-request-process)
-- [Reporting Issues](#reporting-issues)
-- [Contact Information](#contact-information)
-
-## Getting Started
-
-### Prerequisites
-
-- Basic knowledge of Linux and Bash scripting
-- Git installed on your system
-- A text editor (VS Code, Vim, Nano, etc.)
-- For testing: Bats-core framework (optional but recommended)
-
-### Setting Up Your Development Environment
-
-1. **Fork the Repository**
-   ```bash
-   # Fork the repository on GitHub, then clone your fork
-   git clone https://github.com/YOUR_USERNAME/Linux-Projects.git
-   cd Linux-Projects
-   ```
-
-2. **Set Up Upstream Remote**
-   ```bash
-   git remote add upstream https://github.com/akintunero/Linux-Projects.git
-   ```
-
-3. **Create a New Branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-## How to Contribute
-
-### Types of Contributions
-
-We welcome various types of contributions:
-
-1. **Bug Fixes**: Fix issues in existing scripts or documentation
-2. **New Features**: Add new scripts, tutorials, or learning materials
-3. **Documentation**: Improve README files, add comments, or create new guides
-4. **Testing**: Add tests for existing scripts or improve test coverage
-5. **Code Quality**: Refactor code, improve error handling, or enhance security
-
-### Contribution Areas
-
-#### 1. Scripts and Code
-- **Location**: `updated_bash_projects/`, `Basic_Projects/`
-- **Requirements**: 
-  - Add proper error handling
-  - Include input validation
-  - Add usage examples
-  - Follow security best practices
-
-#### 2. Documentation
-- **Location**: All directories with README files
-- **Requirements**:
-  - Clear and concise writing
-  - Include prerequisites
-  - Add troubleshooting sections
-  - Provide usage examples
-
-#### 3. Learning Materials
-- **Location**: `30_days_of_bash/`, `beginner_to_advanced_linux_projects/`
-- **Requirements**:
-  - Accurate and up-to-date information
-  - Progressive difficulty levels
-  - Practical examples
-  - Clear explanations
-
-## Code Style Guidelines
-
-### Bash Script Guidelines
-
-1. **Shebang and Options**
-   ```bash
-   #!/bin/bash
-   set -euo pipefail  # Exit on error, undefined vars, pipe failures
-   ```
-
-2. **Variable Naming**
-   ```bash
-   # Use descriptive names in UPPER_CASE for constants
-   readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-   
-   # Use descriptive names in lowercase for variables
-   local file_path="$1"
-   ```
-
-3. **Function Definitions**
-   ```bash
-   # Use descriptive function names and add comments
-   function validate_input() {
-       # Validate that input is not empty
-       if [[ -z "$1" ]]; then
-           echo "Error: Input cannot be empty" >&2
-           return 1
-       fi
-   }
-   ```
-
-4. **Error Handling**
-   ```bash
-   # Always check for errors
-   if ! command; then
-       echo "Error: command failed" >&2
-       exit 1
-   fi
-   ```
-
-### Documentation Guidelines
-
-1. **README Files**
-   - Start with a brief description
-   - Include prerequisites
-   - Provide usage examples
-   - Add troubleshooting section
-   - Include contribution guidelines
-
-2. **Code Comments**
-   - Explain complex logic
-   - Document function parameters
-   - Include usage examples
-   - Add security considerations
-
-## Testing Guidelines
-
-### Setting Up Bats Testing Framework
-
-1. **Install Bats**
-   ```bash
-   # On macOS
-   brew install bats-core
-   
-   # On Ubuntu/Debian (manual installation required)
-   git clone https://github.com/bats-core/bats-core.git
-   cd bats-core
-   sudo ./install.sh /usr/local
-   cd ..
-   rm -rf bats-core
-   
-   # Alternative: Use package manager if available
-   sudo apt-get install bats  # Some distributions have this package
-   ```
-
-2. **Create Test Files**
-   ```bash
-   # Test file naming: script_name_test.sh
-   # Example: todo_manager_test.sh
-   ```
-
-3. **Write Tests**
-   ```bash
-   #!/usr/bin/env bats
-   
-   @test "todo list add functionality" {
-       run ./todo_manager.sh add "test task"
-       [ "$status" -eq 0 ]
-       [ "$output" = "Task added successfully." ]
-   }
-   
-   @test "todo list remove functionality" {
-       # Setup: add a task first
-       echo "test task" > todo_list.txt
-       
-       run ./todo_manager.sh remove 1
-       [ "$status" -eq 0 ]
-       [ "$output" = "Task removed successfully." ]
-   }
-   ```
-
-### Running Tests
+## Quick start
 
 ```bash
-# Run all tests
-bats test/
+git clone https://github.com/<you>/Linux-Projects.git
+cd Linux-Projects
+git checkout -b fix/short-description
 
-# Run specific test file
-bats test/todo_manager_test.sh
-
-# Run with verbose output
-bats --verbose test/
+make setup    # Debian/Ubuntu/WSL: installs bats, shellcheck, shfmt, jq
+make check    # lint + format check + syntax + tests (what CI runs)
 ```
 
-## Pull Request Process
+No Linux machine? Use the [dev container](setup/README.md): everything is preinstalled.
 
-### Before Submitting
+Optional: `pip install pre-commit && pre-commit install` runs the checks on every commit.
 
-1. **Test Your Changes**
-   ```bash
-   # Run existing tests
-   bats test/
-   
-   # Test your specific changes
-   ./your_script.sh
-   ```
+## Where things live
 
-2. **Check Code Quality**
-   ```bash
-   # Use shellcheck for bash scripts
-   shellcheck your_script.sh
-   
-   # Check for common issues
-   bash -n your_script.sh  # Syntax check
-   ```
+| You want to change | Look in | Follow |
+|--------------------|---------|--------|
+| A lesson | `learn/<course>/` | [docs/style-guide.md](docs/style-guide.md) |
+| A project script | `projects/<name>/` | the script rules below |
+| Tests | `tests/*.bats` | [Bats docs](https://bats-core.readthedocs.io/) |
+| CI, tooling | `.github/`, `Makefile` | keep `make check` and CI in sync |
 
-3. **Update Documentation**
-   - Update relevant README files
-   - Add comments to new code
-   - Update any affected documentation
+## Script rules
 
-### Submitting a Pull Request
+1. `#!/usr/bin/env bash`, then `set -euo pipefail`. The file is executable and has LF line endings.
+2. Quote every expansion (`"$var"`), use `[[ ]]`, `local` in functions, `read -r`, `printf` over `echo -e`.
+3. Source `lib/common.sh` for `msg`/`ok`/`warn`/`err`/`die` instead of re-implementing them.
+4. Errors go to stderr and exit non-zero (`2` invalid input, `77` needs root, `127` missing dependency).
+5. `--help` must work without any optional dependency installed.
+6. Anything that changes the system supports `--dry-run`.
+7. Never accept passwords or tokens as command-line arguments. Read them from stdin or the environment.
+8. Never use `eval` on user input. Build commands as arrays.
+9. It passes `shellcheck -x` and `shfmt -i 4 -ci` with no warnings.
+10. It has tests. Write the failing test first.
 
-1. **Create a Descriptive Title**
-   - Use present tense ("Add feature" not "Added feature")
-   - Be specific about the change
+## Writing tests
 
-2. **Write a Detailed Description**
-   ```markdown
-   ## Description
-   Brief description of what this PR does.
+Tests live in `tests/<script-name>.bats` and `load test_helper`, which gives you a scratch directory
+(`make_workdir`) and a way to fake commands (`make_stub NAME 'body'`).
 
-   ## Changes Made
-   - List specific changes
-   - Include any new files added
-   - Mention any files modified
-
-   ## Testing
-   - Describe how you tested the changes
-   - Include test results if applicable
-
-   ## Checklist
-   - [ ] Code follows style guidelines
-   - [ ] Tests pass
-   - [ ] Documentation updated
-   - [ ] No breaking changes
-   ```
-
-3. **Link Issues**
-   - If fixing an issue, use "Fixes #123"
-   - If related to an issue, use "Related to #123"
-
-### Review Process
-
-1. **Automated Checks**
-   - GitHub Actions will run tests
-   - Code quality checks will be performed
-   - All checks must pass
-
-2. **Code Review**
-   - At least one maintainer will review
-   - Address any feedback provided
-   - Make requested changes if needed
-
-3. **Merge**
-   - Once approved, your PR will be merged
-   - Your contribution will be included in the next release
-
-## Reporting Issues
-
-### Before Reporting
-
-1. **Check Existing Issues**
-   - Search for similar issues
-   - Check if the issue is already reported
-
-2. **Gather Information**
-   - OS and version
-   - Bash version (`bash --version`)
-   - Steps to reproduce
-   - Expected vs actual behavior
-
-### Issue Template
-
-```markdown
-## Bug Report
-
-### Environment
-- OS: [e.g., Ubuntu 20.04, macOS 12.0]
-- Bash Version: [e.g., 5.1.16]
-- Script: [e.g., todo_manager.sh]
-
-### Description
-Brief description of the issue.
-
-### Steps to Reproduce
-1. Run command: `./script.sh`
-2. Provide input: `example`
-3. See error: `error message`
-
-### Expected Behavior
-What you expected to happen.
-
-### Actual Behavior
-What actually happened.
-
-### Additional Information
-Any other relevant information, logs, or screenshots.
+```bash
+@test "remove rejects zero" {
+    run "$TODO" remove 0
+    [ "$status" -eq 1 ]
+    [[ "$output" == *"positive integer"* ]]
+}
 ```
 
-## Contact Information
+- Tests must be **safe anywhere**: no root, no internet, no touching real users, disks or containers.
+  Use `--dry-run`, local servers on `127.0.0.1`, or stubs.
+- Test failures and edge cases, not only the happy path.
+- Run one file with `bats tests/todo.bats`, or one test with `bats tests/todo.bats --filter "remove"`.
 
-### Maintainer
-- **Name**: Olúmáyòwá Akinkuehinmi
-- **Email**: akintunero101@gmail.com
-- **Twitter**: [@akintunero](https://twitter.com/akintunero)
-- **LinkedIn**: [olumayowaa](https://linkedin.com/in/olumayowaa)
+## Writing or editing lessons
 
-### Communication Channels
-- **Issues**: Use GitHub Issues for bug reports and feature requests
-- **Discussions**: Use GitHub Discussions for general questions
-- **Email**: For sensitive matters or detailed discussions
+Read the [style guide](docs/style-guide.md). The short version:
 
-## Recognition
+- Every code block is fenced and tagged (`bash`, `text`, `ini`).
+- Show the **expected output**, and only paste output you actually saw.
+- Risky command? Put a warning before it and an **undo** step after it.
+- Prefer official documentation links, each with a one-line note about what the reader will find.
+- Exercises have acceptance criteria; solutions are runnable scripts that pass ShellCheck.
 
-Contributors will be recognized in the following ways:
-- Listed in the [CONTRIBUTORS.md](CONTRIBUTORS.md) file
-- Mentioned in release notes
-- Invited to join the maintainers team for significant contributions
+## Pull requests
 
-Thank you for contributing to Linux-Projects! Your contributions help make this a valuable resource for the Linux and Bash scripting community. 
+1. Keep a PR to one topic. Small PRs get reviewed faster.
+2. `make check` passes. The PR template has the checklist.
+3. Describe **why**, not only what.
+4. Be ready to iterate. Review is about the learner's experience, not about you.
+
+Commit messages: short imperative summary (`Fix remove for out-of-range index`), blank line, details
+if needed.
+
+## Reporting problems
+
+- **A script or lesson is wrong:** open a *Bug report* or *Lesson feedback* issue and include the exact command
+  and output.
+- **A security issue:** see [SECURITY.md](SECURITY.md); do not open a public issue.
+
+## Credits
+
+Add yourself to [CONTRIBUTORS.md](CONTRIBUTORS.md) in your first pull request.

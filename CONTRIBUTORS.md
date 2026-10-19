@@ -5,12 +5,13 @@ Thank you to all the amazing contributors who have helped make Linux-Projects a 
 ## Project Maintainer
 
 ### Olúmáyòwá Akinkuehinmi
+
 - **Role**: Project Creator & Maintainer
-- **Email**: akintunero101@gmail.com
+- **Email**: <akintunero101@gmail.com>
 - **Twitter**: [@akintunero](https://twitter.com/akintunero)
 - **LinkedIn**: [olumayowaa](https://linkedin.com/in/olumayowaa)
 - **GitHub**: [akintunero](https://github.com/akintunero)
-- **Contributions**: 
+- **Contributions**:
   - Project architecture and structure
   - Enhanced script development
   - Comprehensive documentation
@@ -42,44 +43,55 @@ If you've contributed to this project, please add your name to this list by:
 
 ## Contribution Categories
 
-### 🚀 Code Contributors
+### Code Contributors
+
 Contributors who have written or improved scripts and code.
 
-### 📚 Documentation Contributors
+### Documentation Contributors
+
 Contributors who have improved documentation, README files, and guides.
 
-### 🧪 Testing Contributors
+### Testing Contributors
+
 Contributors who have added tests, improved test coverage, or enhanced the testing framework.
 
-### 🐛 Bug Fixers
+### Bug Fixers
+
 Contributors who have identified and fixed bugs in existing code.
 
-### 💡 Feature Developers
+### Feature Developers
+
 Contributors who have added new features or enhanced existing functionality.
 
-### 🔧 Infrastructure Contributors
+### Infrastructure Contributors
+
 Contributors who have improved CI/CD pipelines, automation, or project infrastructure.
 
 ## Recognition Levels
 
-### 🌟 Gold Contributors
+### Gold Contributors
+
 Contributors with 10+ significant contributions or major feature implementations.
 
-### 🥈 Silver Contributors
+### Silver Contributors
+
 Contributors with 5-9 meaningful contributions or substantial improvements.
 
-### 🥉 Bronze Contributors
+### Bronze Contributors
+
 Contributors with 1-4 helpful contributions or bug fixes.
 
 ## Special Thanks
 
 ### Open Source Tools
+
 - **Bats-core**: Testing framework for bash scripts
 - **Shellcheck**: Static analysis tool for shell scripts
 - **GitHub Actions**: CI/CD automation platform
 - **Docker**: Containerization platform for examples
 
 ### Community Support
+
 - **Linux Community**: For inspiration and best practices
 - **DevOps Community**: For modern automation techniques
 - **Open Source Contributors**: For the tools and libraries we use
@@ -117,10 +129,10 @@ Please read our [Contributing Guidelines](CONTRIBUTING.md) before making contrib
 
 For questions about contributing or to discuss ideas:
 
-- **Email**: akintunero101@gmail.com
+- **Email**: <akintunero101@gmail.com>
 - **GitHub Issues**: [Create an issue](https://github.com/akintunero/Linux-Projects/issues)
 - **GitHub Discussions**: [Join discussions](https://github.com/akintunero/Linux-Projects/discussions)
 
 ---
 
-*This list is maintained by the project maintainer. Please keep it updated and respectful.* 
+*This list is maintained by the project maintainer. Please keep it updated and respectful.*
